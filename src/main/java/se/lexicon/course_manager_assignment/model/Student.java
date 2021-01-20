@@ -11,11 +11,16 @@ public class Student {
     private String address;
 
     public Student() {
-        id = StudentSequencer.nextStudentId();
+    }
+
+    public Student(String name, String email, String address) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
     }
 
     public Student(Integer id, String name, String email, String address) {
-        this.id = StudentSequencer.nextStudentId();
+        this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
