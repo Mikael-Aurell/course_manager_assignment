@@ -69,7 +69,7 @@ public class StudentCollectionRepository implements StudentDao {
         }
         Student studentToFindById = null;
         for (Student student : students) {
-            // if condition
+
             if (id == student.getId()) {
                 studentToFindById = student;
                 break;

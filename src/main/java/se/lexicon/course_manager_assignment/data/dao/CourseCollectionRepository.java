@@ -46,7 +46,7 @@ public class CourseCollectionRepository implements CourseDao{
         }
         Course courseToFindById = null;
         for (Course student : courses) {
-            // if condition
+
             if (id == student.getId()) {
                 courseToFindById = student;
                 break;
@@ -70,27 +70,56 @@ public class CourseCollectionRepository implements CourseDao{
 
     @Override
     public Collection<Course> findByDateBefore(LocalDate end) {
-        return null;
+        List<Course> result = new ArrayList<>();
+        for (Course course : courses) {
+                if (course.getStartDate().isBefore(end)) {
+                    result.add(course);
+                }
+        }
+        return result;
     }
 
     @Override
     public Collection<Course> findByDateAfter(LocalDate start) {
-        return null;
+        List<Course> result = new ArrayList<>();
+        for (Course course : courses) {
+            if (course.getStartDate().isBefore(start)) {
+                result.add(course);
+            }
+        }
+        return result;
     }
 
     @Override
     public Collection<Course> findAll() {
-        return null;
+        return new ArrayList<>(courses);
     }
 
     @Override
     public Collection<Course> findByStudentId(int studentId) {
-        return null;
+        List<Course> result = new ArrayList<>();
+        for (Course course : courses) {
+            for (Student student : course.getStudents()) {
+                if (student.equals(studentId)) {
+                    result.add(course);
+                }
+            }
+        }
+        return result;
     }
 
     @Override
     public boolean removeCourse(Course course) {
-        return false;
+        boolean isDelete = false;
+        Iterator<Course> iterator = courses.iterator();
+        while (iterator.hasNext()) {
+            Course result = iterator.next();
+            if (result.equals(course)) {
+                iterator.remove();
+                isDelete = true;
+            }
+        }
+        return isDelete;
     }
 
     @Override
