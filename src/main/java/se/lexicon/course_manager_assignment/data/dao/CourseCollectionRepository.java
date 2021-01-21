@@ -72,7 +72,7 @@ public class CourseCollectionRepository implements CourseDao{
     public Collection<Course> findByDateBefore(LocalDate end) {
         List<Course> result = new ArrayList<>();
         for (Course course : courses) {
-                if (course.getStartDate().isBefore(end)) {
+                if (course.getStartDate().plusWeeks(course.getWeekDuration()).isBefore(end)) {
                     result.add(course);
                 }
         }
@@ -83,7 +83,7 @@ public class CourseCollectionRepository implements CourseDao{
     public Collection<Course> findByDateAfter(LocalDate start) {
         List<Course> result = new ArrayList<>();
         for (Course course : courses) {
-            if (course.getStartDate().isBefore(start)) {
+            if (course.getStartDate().isAfter(start)) {
                 result.add(course);
             }
         }

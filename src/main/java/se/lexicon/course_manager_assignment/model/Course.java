@@ -38,16 +38,32 @@ public class Course {
         this.students = students;
     }
 
+    public Course(Integer id, String courseName, LocalDate startDate, int weekDuration, Collection<Student> students) {
+        this.id = id;
+        this.courseName = courseName;
+        this.startDate = startDate;
+        this.weekDuration = weekDuration;
+        this.students = students;
+    }
+
     public boolean enrollStudents(Student student){
         boolean status = false;
-        // todo:
+        if(student == null)
+            throw new IllegalArgumentException("the student is null");
+
+        for (Student studentExist: students) {
+            if(studentExist == student){
+                students.add(student);
+                status = true;
+            }
+        }
         return status;
     }
 
     public boolean unenrollStudents(Student student){
         boolean status = false;
-        // todo:
-        return status;
+        students.remove(student);
+        return status = true;
     }
 
     public Integer getId() {
