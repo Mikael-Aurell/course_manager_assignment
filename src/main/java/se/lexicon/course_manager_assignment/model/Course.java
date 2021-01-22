@@ -47,23 +47,32 @@ public class Course {
     }
 
     public boolean enrollStudents(Student student){
-        boolean status = false;
-        if(student == null)
-            throw new IllegalArgumentException("the student is null");
 
-        for (Student studentExist: students) {
-            if(studentExist == student){
-                students.add(student);
-                status = true;
-            }
+        if(student == null){
+            throw new IllegalArgumentException("The student is empty.");
         }
-        return status;
+
+        if(students.contains(student)){
+            throw new IllegalArgumentException("You can not have duplicate Students.");
+        }
+
+        students.add(student);
+
+        return true;
     }
 
-    public boolean unenrollStudents(Student student){
-        boolean status = false;
-        students.remove(student);
-        return status = true;
+    public boolean unEnrollStudents(Student student){
+        if(student == null){
+            throw new IllegalArgumentException("The Student is empty.");
+        }
+
+        if(!students.contains(student)){
+            throw new IllegalArgumentException("The Student does not exist in the list.");
+        }
+
+        students.add(student);
+
+        return true;
     }
 
     public Integer getId() {
