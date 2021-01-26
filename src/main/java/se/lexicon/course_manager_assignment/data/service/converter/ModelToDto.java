@@ -16,9 +16,7 @@ public class ModelToDto implements Converters {
 
     @Override
     public StudentView studentToStudentView(Student student) {
-        if(student.equals(null)){
-            throw new IllegalArgumentException("The object Student is empty.");
-        }
+
         StudentView studentView = new StudentView(student.getId(), student.getName(),
                 student.getEmail(), student.getAddress());
         return studentView;
@@ -26,9 +24,7 @@ public class ModelToDto implements Converters {
 
     @Override
     public CourseView courseToCourseView(Course course) {
-        if(course.equals(null)){
-            throw new IllegalArgumentException("The object Student is empty.");
-        }
+
         CourseView courseView = new CourseView(
                 course.getId(),
                 course.getCourseName(),
@@ -40,9 +36,7 @@ public class ModelToDto implements Converters {
 
     @Override
     public List<CourseView> coursesToCourseViews(Collection<Course> courses) {
-        if(courses.equals(null)){
-            throw new IllegalArgumentException("The object Courses are empty.");
-        }
+
         List<CourseView> courseViewList = new ArrayList<>();
         for (Course course : courses){
              courseViewList.add(courseToCourseView(course));
@@ -52,9 +46,7 @@ public class ModelToDto implements Converters {
 
     @Override
     public List<StudentView> studentsToStudentViews(Collection<Student> students) {
-        if(students.equals(null)){
-            throw new IllegalArgumentException("The object Students are empty.");
-        }
+
         List<StudentView> studentViewList = new ArrayList<>();
         for (Student student : students){
             studentViewList.add(studentToStudentView(student));

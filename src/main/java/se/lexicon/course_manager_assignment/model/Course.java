@@ -48,30 +48,17 @@ public class Course {
 
     public boolean enrollStudents(Student student){
 
-        if(student == null){
-            throw new IllegalArgumentException("The student is empty.");
+        if(!students.contains(student)){
+            students.add(student);
         }
-
-        if(students.contains(student)){
-            throw new IllegalArgumentException("You can not have duplicate Students.");
-        }
-
-        students.add(student);
-
         return true;
     }
 
     public boolean unEnrollStudents(Student student){
-        if(student == null){
-            throw new IllegalArgumentException("The Student is empty.");
+
+        if(students.contains(student)){
+            students.add(student);
         }
-
-        if(!students.contains(student)){
-            throw new IllegalArgumentException("The Student does not exist in the list.");
-        }
-
-        students.add(student);
-
         return true;
     }
 
